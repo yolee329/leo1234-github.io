@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configurations PC</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .configurations {
+      margin-top: 20px;
+    }
+    .configuration {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Partagez vos configurations PC</h1>
+    
+    <form id="configForm">
+      <h2>Ajoutez une configuration</h2>
+      <label for="title">Titre</label>
+      <input type="text" id="title" placeholder="Ex: PC Gamer 2024" required>
+      
+      <label for="components">Composants</label>
+      <textarea id="components" placeholder="Listez les composants ici..." required></textarea>
+      
+      <button type="submit">Publier</button>
+    </form>
+    
+    <div class="configurations" id="configurations">
+      <h2>Configurations publiées</h2>
+      <!-- Les configurations seront ajoutées ici dynamiquement -->
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('configForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const title = document.getElementById('title').value;
+      const components = document.getElementById('components').value;
+      
+      // Créer un nouvel élément pour la configuration
+      const configDiv = document.createElement('div');
+      configDiv.className = 'configuration';
+      configDiv.innerHTML = `<h3>${title}</h3><p>${components}</p>`;
+      
+      // Ajouter la configuration à la liste
+      document.getElementById('configurations').appendChild(configDiv);
+      
+      // Réinitialiser le formulaire
+      document.getElementById('configForm').reset();
+    });
+  </script>
+</body>
+</html>
